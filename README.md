@@ -2,8 +2,7 @@
 
 MagicMirror² Module to display the local gas prices in Germany.
 
-
-![image](https://i.imgur.com/lEd6fYY.jpg)
+![example](example.jpg)
 
 
 ## Dependencies
