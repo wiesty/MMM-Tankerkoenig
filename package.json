@@ -1,5 +1,5 @@
 {
-    "name": "MMM-Tankerkoenig",
+    "name": "mmm-tankerkoenig",
     "version": "1.0.0",
     "description": "MagicMirror² Module to display the local gas prices in Germany.",
     "main": "MMM-Tankerkoenig.js",
@@ -8,9 +8,8 @@
     "homepage": "https://github.com/wiesty/MMM-Tankerkoenig",
     "keywords": [
       "magic mirror",
-      "public transport",
-      "mvg",
-      "mvv"
+      "gas",
+      "germany"
     ],
     "repository": {
       "type": "git",
