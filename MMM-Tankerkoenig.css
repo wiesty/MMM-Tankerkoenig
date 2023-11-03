@@ -1,11 +1,11 @@
-/* Tankerkoenig Magic Mirror CSS */
+/* Tankerkoenig MagicMirror² CSS */
 .tanker-table {
-    border-collapse: collapse;
-  }
-  
-  .tanker-table th, .tanker-table td {
-    padding-left: 5px;
-    padding-right: 5px;
-    text-align: left;
-  }
-  
+  border-collapse: collapse;
+}
+
+.tanker-table th,
+.tanker-table td {
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: left;
+}
