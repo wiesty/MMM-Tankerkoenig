@@ -7,17 +7,15 @@ MagicMirror² Module to display the local gas prices in Germany.
 ## Dependencies
 
 * instance of [MagicMirror²](https://github.com/MichMich/MagicMirror)
-* Node Fetch (linux: npm install node-fetch)
 
 ## Installation
 
 1. Clone this repository in your MagicMirror installation into the folder modules.
     `git clone https://github.com/wiesty/MMM-Tankerkoenig`
-2. Install dependencies (If not installed yet) in the main MagicMirror folder (npm install node-fetch)
-3. Get your free* api key from [creativecommons.tankerkoenig.de](https://creativecommons.tankerkoenig.de/)
-4. Head over to [Tankerkoenig Station API Helper](https://wiesty.de/tkhelper/) and copy your IDs
-5. Search your station and modify the config template below
-6. Add configuration to your config.js
+2. Get your free* api key from [creativecommons.tankerkoenig.de](https://creativecommons.tankerkoenig.de/)
+3. Head over to [Tankerkoenig Station API Helper](https://wiesty.de/tkhelper/) and copy your IDs
+4. Search your station and modify the config template below
+5. Add configuration to your config.js
 
 ## Config
 
