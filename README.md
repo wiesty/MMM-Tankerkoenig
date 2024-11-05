@@ -34,6 +34,7 @@
 ## Notes
 
 Right now this is a simple version of the Tankerkoenig API. Might add more features some time.
+Thanks to Tankerkoenig to provide this amazing API! Please consider supporting them!
 
 To reduce the network traffic, you have to enter the name of the desired station manually :-)
 
