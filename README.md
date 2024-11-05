@@ -1,4 +1,4 @@
-# MMM-Tankerkoenig [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/wiesty/MMM-Tankerkoenig/raw/master/LICENSE)
+# MMM-Tankerkoenig [![GitHub license](https://img.shields.io/badge/license-CC--BY--NC--SA--4.0-lightgrey.svg)](https://raw.githubusercontent.com/wiesty/MMM-Tankerkoenig/refs/heads/main/LICENSE)
 
 [MagicMirror²](https://github.com/MichMich/MagicMirror) module to display the local gas prices in Germany.
 
