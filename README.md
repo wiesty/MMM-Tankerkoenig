@@ -33,9 +33,9 @@
 
 ## Notes
 
-Right now this is a simple version of the Tankerkoenig API. Might add more features some time.
-Thanks to Tankerkoenig to provide this amazing API! Please consider supporting them!
-
-To reduce the network traffic, you have to enter the name of the desired station manually :-)
-
-*No guarantee of information accuracy - API may transition from Free to Paid version at any time.
+🚀 Simple Version of Tankerkoenig API
+Looking to add more features in the future. Big thanks to Tankerkoenig for providing this great API – consider supporting them! 🙌
+⚠️ Network Traffic Reduction
+To help reduce network traffic, please enter the name of your desired station manually. 😊
+📢 Note
+Information accuracy isn’t guaranteed, and the API may change from free to paid access at any time.
