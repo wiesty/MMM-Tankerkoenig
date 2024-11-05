@@ -34,7 +34,7 @@
 ## Notes
 
 🚀 Simple Version of Tankerkoenig API
-Looking to add more features in the future. Big thanks to Tankerkoenig for providing this great API – consider supporting them! 🙌
+Looking to add more features in the future. Big thanks to Tankerkoenig for providing this great API – [consider supporting them!](https://www.tankerkoenig.de/spende/?app=API) 🙌
 ⚠️ Network Traffic Reduction
 To help reduce network traffic, please enter the name of your desired station manually. 😊
 📢 Note
