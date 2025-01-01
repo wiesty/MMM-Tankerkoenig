@@ -4,7 +4,7 @@
     "description": "MagicMirror² Module to display the local gas prices in Germany.",
     "main": "MMM-Tankerkoenig.js",
     "author": "wiesty",
-    "license": "MIT",
+    "license": "CC BY-NC 4.0",
     "homepage": "https://github.com/wiesty/MMM-Tankerkoenig",
     "keywords": [
       "magic mirror",
