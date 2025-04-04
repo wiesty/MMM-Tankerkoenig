@@ -94,7 +94,7 @@ Module.register("MMM-Tankerkoenig", {
       for (let fuelType of this.config.fuelTypes) {
         var fuelPrice = document.createElement("td");
         if (stationData[fuelType] !== undefined) {
-          fuelPrice.innerHTML = `${stationData[fuelType].toFixed(2)} €`;
+          fuelPrice.innerHTML = `${Math.floor(stationData[fuelType] * 100) / 100} €`;
         } else {
           fuelPrice.innerHTML = "-";
         }
