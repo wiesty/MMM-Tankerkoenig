@@ -27,6 +27,14 @@
             "474e5046-deaf-4f9b-9a32-9797b778f047": "Total Berlin", // another ID possible
         },
         fuelTypes: ["e5", "e10", "diesel"] // filter gas types
+        sortOptions: {
+            sortBy: 'name',        // 'name' | 'stationOrder' | 'price'
+            direction: 'asc',      // 'asc' | 'desc'
+            fuelType: 'e5'         // used only for sortBy === 'price'
+        },
+        options: {
+            priceRound: "down"     // 'up', 'down', 'none', 'commercial'
+        }
     }
 },
 ```
@@ -39,3 +47,18 @@ Looking to add more features in the future. Big thanks to Tankerkoenig for provi
 To help reduce network traffic, please enter the name of your desired station manually. 😊
 📢 Note
 Information accuracy isn’t guaranteed, and the API may change from free to paid access at any time.
+
+## Changelog
+
+### 1.1.0 - 2025-04-12
+- Add sorting possibilities with `sortOptions` property
+    - `sortBy` 'name', 'price' or 'stationOrder' for your own stationNames order
+    - `direction` 'asc' or 'desc'
+    - `fuelType` only for `sortBy === 'price'` and must be one of `fuelTypes`
+- Add `options` property with child `priceRound` for how the price will be displayed
+    - 'up' rounds up and results in 2 decimal digits
+    - 'down' rounds down and results in 2 decimal digits
+    - 'none' results in 3 decimal digits (rounds in a commercial way if necessary)
+    - 'commercial' rounds in a commercial way and results in 2 decimal digits
+- Add more (German) keywords for this module
+- Add contributor 'TobTra89'
