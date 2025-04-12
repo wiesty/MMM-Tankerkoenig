@@ -8,13 +8,72 @@ Module.register("MMM-Tankerkoenig", {
     },
     fuelTypes: ["e5", "e10", "diesel"],
     sortOptions: {
-      sortBy: 'name',        // 'name' | 'stationOrder' | 'price'
-      direction: 'asc',      // 'asc' | 'desc'
-      fuelType: 'e5'         // used only for sortBy === 'price'
+      sortBy: 'stationOrder', // 'name' | 'price'| 'stationOrder'
+      direction: 'asc',       // 'asc' | 'desc'
+      fuelType: 'e5'          // used only for sortBy === 'price'
     },
     options: {
-      priceRound: "down"     // 'up', 'down', 'none', 'commercial'
+      priceRound: "down"      // 'up', 'down', 'none', 'commercial'
     }
+  },
+
+  sortStations(prices) {
+    let stations = Object.entries(prices)
+      .map(([id, data]) => {
+        return {
+          id,
+          ...data,
+          name: this.config.stationNames[id] || 'Unknown',
+        };
+      });
+
+    if (this.config.sortOptions) {
+      const { sortBy, direction, fuelType } = this.config.sortOptions;
+      if (sortBy === 'name') {
+        stations.sort((a, b) =>
+          direction === 'asc'
+            ? a.name.localeCompare(b.name)
+            : b.name.localeCompare(a.name)
+        );
+      } else if (sortBy === 'price') {
+        stations.sort((a, b) => {
+          const priceA = typeof a[fuelType] === 'number' ? a[fuelType] : Infinity;
+          const priceB = typeof b[fuelType] === 'number' ? b[fuelType] : Infinity;
+
+          return direction === 'asc'
+            ? priceA - priceB
+            : priceB - priceA;
+        });
+      } else if (sortBy === 'stationOrder') {
+        const nameOrder = Object.keys(this.config.stationNames);
+        stations.sort((a, b) =>
+          nameOrder.indexOf(a.id) - nameOrder.indexOf(b.id)
+        );
+      }
+    }
+    return stations;
+  },
+
+  roundPrice(num) {
+    let result = num.toFixed(2);
+
+    if (this.config.options.priceRound) {
+      switch (this.config.options.priceRound) {
+        case "up":
+          result = (Math.ceil(num * 100) / 100).toFixed(2);
+          break;
+        case "down":
+          result = (Math.floor(num * 100) / 100).toFixed(2);
+          break;
+        case "none":
+          result = num.toFixed(3);
+          break;
+        case "commercial":
+          result = num.toFixed(2);
+      }
+    }
+
+    return result;
   },
 
   getStyles: function () {
@@ -25,9 +84,8 @@ Module.register("MMM-Tankerkoenig", {
   start: function () {
     this.loaded = false;
     this.stationArray = [];
-    this.url = `https://creativecommons.tankerkoenig.de/json/prices.php?apikey=${
-      this.config.apiKey
-    }&ids=${Object.keys(this.config.stationNames).join(",")}`;
+    this.url = `https://creativecommons.tankerkoenig.de/json/prices.php?apikey=${this.config.apiKey
+      }&ids=${Object.keys(this.config.stationNames).join(",")}`;
     this.getData();
     setInterval(() => {
       this.getData();
@@ -40,7 +98,7 @@ Module.register("MMM-Tankerkoenig", {
       const data = await response.json();
 
       if (data.ok) {
-        this.stationArray = this.sortStations(data.prices)
+        this.stationArray = this.sortStations(data.prices);
         this.loaded = true;
         this.updateDom();
       } else {
@@ -100,8 +158,8 @@ Module.register("MMM-Tankerkoenig", {
       // Fuel Prices
       for (let fuelType of this.config.fuelTypes) {
         var fuelPrice = document.createElement("td");
-        if (stationData[fuelType] !== undefined) {          
-          fuelPrice.innerHTML = `${roundPrice(stationData[fuelType])} €`;
+        if (stationData[fuelType] !== undefined) {
+          fuelPrice.innerHTML = `${this.roundPrice(stationData[fuelType])} €`;
         } else {
           fuelPrice.innerHTML = "-";
         }
@@ -112,60 +170,5 @@ Module.register("MMM-Tankerkoenig", {
     }
 
     return wrapper;
-  },
-
-  sortStations: function(prices) {
-    let stations = Object.entries(prices)
-    .map(([id, data]) => ({
-      id,
-      name: this.config.stationNames[id] || 'Unknown',
-      ...data
-    }));
-    if (this.config.sortOptions) {    
-      const { sortBy, direction, fuelType } = this.config.sortOptions;
-      if (sortBy === 'name') {
-        stations.sort((a, b) =>
-          direction === 'asc'
-            ? a.name.localeCompare(b.name)
-            : b.name.localeCompare(a.name)
-        );
-      } else if (sortBy === 'price') {
-        stations.sort((a, b) => {
-          const priceA = typeof a[fuelType] === 'number' ? a[fuelType] : Infinity;
-          const priceB = typeof b[fuelType] === 'number' ? b[fuelType] : Infinity;
-    
-          return direction === 'asc'
-            ? priceA - priceB
-            : priceB - priceA;
-        });
-      } else if (sortBy === 'stationOrder') {
-        const nameOrder = Object.keys(this.config.stationNames);
-        stations.sort((a, b) =>
-          nameOrder.indexOf(a.id) - nameOrder.indexOf(b.id)
-        );  
-      }
-    }
-    return stations;
-  },
-
-  roundPrice: function(num) {
-    let result;
-  
-    switch (this.config.options.priceRound) {
-      case "up":
-        result = (Math.ceil(num * 100) / 100).toFixed(2);
-        break;
-      case "down":
-        result = (Math.floor(num * 100) / 100).toFixed(2);
-        break;
-      case "none":
-        result = num.toFixed(3);
-        break;
-      case "commercial":
-      default:
-        result = num.toFixed(2); 
-    }
-
-    return result
   }
 });
