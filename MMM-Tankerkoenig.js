@@ -8,7 +8,7 @@ Module.register("MMM-Tankerkoenig", {
     },
     fuelTypes: ["e5", "e10", "diesel"],
     sortOptions: {
-      sortBy: 'stationOrder', // 'name' | 'price'| 'stationOrder'
+      sortBy: 'stationOrder', // 'name' | 'price' | 'stationOrder'
       direction: 'asc',       // 'asc' | 'desc'
       fuelType: 'e5'          // used only for sortBy === 'price'
     },

@@ -26,7 +26,7 @@
             "24a381e3-0d72-416d-bfd8-b2f65f6e5802": "Esso Tankstelle", // ID with custom name
             "474e5046-deaf-4f9b-9a32-9797b778f047": "Total Berlin", // another ID possible
         },
-        fuelTypes: ["e5", "e10", "diesel"] // filter gas types
+        fuelTypes: ["e5", "e10", "diesel"], // filter gas types
         sortOptions: {
             sortBy: 'name',        // 'name' | 'stationOrder' | 'price'
             direction: 'asc',      // 'asc' | 'desc'
